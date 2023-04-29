@@ -1,0 +1,6 @@
+#first line
+node_modules/
+
+#second line
+.eslintrc.js
+/dist
