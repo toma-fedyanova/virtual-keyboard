@@ -2,12 +2,12 @@
 [
   {
     "id": 1,
-    "content": "`",
-    "contentAdd": "~",
-    "contentEn": "ё",
-    "contentAddEn": "Ё",
+    "content": "ё",
+    "contentAdd": "Ё",
+    "contentEn": "`",
+    "contentAddEn": "~",
     "class": "button-square button_light",
-    "data-num": "96"
+    "data-num": "192"
   },
   {
     "id": 2,
@@ -268,7 +268,7 @@
     "contentEn": "CapsLock",
     "contentAddEn": "CapsLock",
     "class": "button-rectangle button_dark",
-    "data-num": "20"
+    "data-num": "caps"
   },
   {
     "id": 31,
@@ -385,7 +385,7 @@
     "contentEn": "Shift",
     "contentAddEn": "Shift",
     "class": "button-rectangle button_dark",
-    "data-num": "16"
+    "data-num": "ShiftLeft"
   },
   {
     "id": 44,
@@ -421,7 +421,7 @@
     "contentEn": "v",
     "contentAddEn": "V",
     "class": "button-square button_light",
-    "data-num": "77"
+    "data-num": "86"
   },
   {
     "id": 48,
@@ -493,7 +493,7 @@
     "contentEn": "Shift",
     "contentAddEn": "Shift",
     "class": "button-addition button_dark",
-    "data-num": "16"
+    "data-num": "ShiftRight"
   },
   {
     "id": 56,
@@ -502,7 +502,7 @@
     "contentEn": "Ctrl",
     "contentAddEn": "Ctrl",
     "class": "button-square button_dark",
-    "data-num": "17"
+    "data-num": "ControlLeft"
   },
   {
     "id": 57,
@@ -520,7 +520,7 @@
     "contentEn": "Alt",
     "contentAddEn": "Alt",
     "class": "button-square button_dark",
-    "data-num": "18"
+    "data-num": "AltLeft"
   },
   {
     "id": 59,
@@ -538,7 +538,7 @@
     "contentEn": "Alt",
     "contentAddEn": "Alt",
     "class": "button-square button_dark",
-    "data-num": "18"
+    "data-num": "AltRight"
   },
   {
     "id": 61,
@@ -546,7 +546,8 @@
     "contentAdd": "",
     "contentEn": "",
     "contentAddEn": "",
-    "class": "button-square button_dark icono-caretLeft arrow"
+    "class": "button-square button_dark icono-caretLeft arrow",
+    "data-num": "37"
   },
   {
     "id": 62,
@@ -554,7 +555,8 @@
     "contentAdd": "",
     "contentEn": "",
     "contentAddEn": "",
-    "class": "button-square button_dark icono-caretDown arrow"
+    "class": "button-square button_dark icono-caretDown arrow",
+    "data-num": "40"
   },
   {
     "id": 63,
@@ -562,7 +564,8 @@
     "contentAdd": "",
     "contentEn": "",
     "contentAddEn": "",
-    "class": "button-square button_dark icono-caretRight arrow"
+    "class": "button-square button_dark icono-caretRight arrow",
+    "data-num": "39"
   },
   {
     "id": 64,
@@ -571,7 +574,7 @@
     "contentEn": "Ctrl",
     "contentAddEn": "Ctrl",
     "class": "button-square button_dark",
-    "data-num": "17"
+    "data-num": "ControlRight"
   }
 ]
 }

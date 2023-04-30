@@ -2,6 +2,7 @@ import { ElementCreator } from './Button';
 
 const body = document.getElementsByTagName('body')[0];
 let flag = true;
+let choice = false;
 
 // add title
 let objectTitle = {
@@ -31,20 +32,31 @@ let objectKeyboard = {
 };
 let call2 = new ElementCreator(objectKeyboard);
 let keyboard = call2.generateElement();
-/* const keyboard = document.createElement('section');
-keyboard.className = 'keyboard'; */
 body.append(keyboard);
 
 // add information
-const info = document.createElement('section');
-info.className = 'info';
-const p1 = document.createElement('p');
-p1.textContent = 'Клавиатура создана в операционной системе Windows';
-info.append(p1);
-const p2 = document.createElement('p');
-p2.textContent = 'Для переключения языка комбинация: левый ctrl + alt';
-info.append(p2);
+let objectInfo = {
+  elem: 'section',
+  className: 'info',
+};
+let call3 = new ElementCreator(objectInfo);
+let info = call3.generateElement();
 body.append(info);
+
+let objectText1 = {
+  elem: 'p',
+  text: 'Клавиатура создана в операционной системе Windows',
+};
+let call4 = new ElementCreator(objectText1);
+let p1 = call4.generateElement();
+info.append(p1);
+let objectText2 = {
+  elem: 'p',
+  text: 'Для переключения языка комбинация: левый ctrl + alt',
+};
+let call5 = new ElementCreator(objectText2);
+let p2 = call5.generateElement();
+info.append(p2);
 
 // add functions for get values for buttons
 async function getValuesRu(num) {
@@ -54,15 +66,11 @@ async function getValuesRu(num) {
   this.textContent = data['valuesButton'][num]['content'];
   this.id = data['valuesButton'][num]['id'];
   this.className = data['valuesButton'][num]['class'];
+  this.setAttribute('data-num', data['valuesButton'][num]['data-num']);
+  this.setAttribute('data-upper', data['valuesButton'][num]['contentAdd']);
+  this.setAttribute('data-lower', data['valuesButton'][num]['content']);
 }
-async function getValuesRuUpperCase(num) {
-  const values = '../valuesButton.json';
-  const res = await fetch(values);
-  const data = await res.json();
-  this.textContent = data['valuesButton'][num]['contentAdd'];
-  this.id = data['valuesButton'][num]['id'];
-  this.className = data['valuesButton'][num]['class'];
-}
+
 async function getValuesEn(num) {
   const values = '../valuesButton.json';
   const res = await fetch(values);
@@ -70,17 +78,25 @@ async function getValuesEn(num) {
   this.textContent = data['valuesButton'][num]['contentEn'];
   this.id = data['valuesButton'][num]['id'];
   this.className = data['valuesButton'][num]['class'];
-}
-async function getValuesEnUpperCase(num) {
-  const values = '../valuesButton.json';
-  const res = await fetch(values);
-  const data = await res.json();
-  this.textContent = data['valuesButton'][num]['contentAddEn'];
-  this.className = data['valuesButton'][num]['class'];
-  this.id = data['valuesButton'][num]['id'];
-  this.dataset.num = data['valuesButton'][num]['data-num'];
+  this.setAttribute('data-num', data['valuesButton'][num]['data-num']);
+  this.setAttribute('data-upperen', data['valuesButton'][num]['contentAddEn']);
+  this.setAttribute('data-loweren', data['valuesButton'][num]['contentEn']);
 }
 
+// to upper case
+function getValuesRuUpperCase() {
+  this.textContent = this.dataset.upper;
+}
+function getValuesEnUpperCase() {
+  this.textContent = this.dataset.upperen;
+}
+// to lower case
+function getValuesRuLowerCase() {
+  this.textContent = this.dataset.lower;
+}
+function getValuesEnLowerCase() {
+  this.textContent = this.dataset.loweren;
+}
 // hover buttons
 function hoverButton() {
   this.classList.add('colored');
@@ -101,42 +117,127 @@ function renderKeyboardButtons(start, length) {
     } else {
       getValuesEn.call(btn, i);
     }
-    btn.addEventListener('mousedown', hoverButton);
-    btn.addEventListener('mouseup', removeHover);
     div.append(btn);
   }
   keyboard.append(div);
 }
 
-// print text with click keyboard virtual
+// print text with click keyboard
 function printClickedButtonText(data) {
   textarea.value += data.textContent;
 }
-document.getElementsByClassName('keyboard')[0].addEventListener('click', function addVirtualText(event) {
-  const target = event.target.closest('button.button_light');
-  if (target) printClickedButtonText(target);
-});
-
-// print text with click keyboard
-const key = document.getElementsByClassName('keyboard')[0];
-textarea.addEventListener('keypress', function(event) {
-  let buttons = key.getElementsByTagName('button');
-  console.log(event.which);
-  for (let button of buttons) {
-    if (event.which === button.dataset.num) {
-      printClickedButtonText(button);
+// mouse event
+let element = document.getElementsByClassName('keyboard')[0];
+element.addEventListener('mousedown', function addVirtualText(event) {
+  let target = event.target.closest('button.button-square');
+  let num = event.code;
+  console.log(num);
+  if (event.code === 'CapsLock') {
+    console.log('capslock down');
+    if (!choice) {
+      hoverButton.call(buttons[29]);
+      choice = true;
+      changeToUpperCase();
+    } else {
+      choice = false;
+      removeHover.call(buttons[29]);
+      changeToLowerCase();
     }
+  } else if (target) {
+    printClickedButtonText(target);
+    hoverButton.call(target);
   }
 });
+element.addEventListener('mouseup', function addVirtualText(event) {
+  let target = event.target.closest('button.button-square');
+  if (event.code === 'CapsLock') console.log('capslock mouseup');
+  else if (target) target.classList.remove('colored');
+});
+
+// keyboard event
+let buttons = document.getElementsByTagName('button');
+body.addEventListener('keydown', function keyboardListener(event) {
+  event.preventDefault();
+  let num = event.which;
+  for (let button of buttons) {
+    if (num === Number(button.getAttribute('data-num'))) {
+      printClickedButtonText(button);
+      hoverButton.call(button);
+    }
+  }
+  for (let elem of buttons) {
+    if (String(event.code) === elem.getAttribute('data-num')) {
+      hoverButton.call(elem);
+    };
+  }
+  if (event.code === 'CapsLock') {
+    if (!choice) {
+      hoverButton.call(buttons[29]);
+      choice = true;
+      changeToUpperCase();
+    } else {
+      choice = false;
+      removeHover.call(buttons[29]);
+      changeToLowerCase();
+    }
+  }
+  if (event.ctrlKey && event.altKey) {
+    if (flag) flag = false;
+    else flag = true;
+    keyboard.innerHTML = '';
+    renderKeyboardButtons(0, 14);
+    renderKeyboardButtons(14, 29);
+    renderKeyboardButtons(29, 42);
+    renderKeyboardButtons(42, 55);
+    renderKeyboardButtons(55, 65);
+  }
+});
+
+// key up of keyboard
+body.addEventListener('keyup', function keyboardUpListener(event) {
+  event.preventDefault();
+  let num = event.which;
+  for (let button of buttons) {
+    if (num === Number(button.getAttribute('data-num'))) {
+      removeHover.call(button);
+    }
+  };
+  for (let elem of buttons) {
+    if (String(event.code) === elem.getAttribute('data-num')) {
+      removeHover.call(elem);
+    };
+  }
+});
+
+// change letter to UpperCase
+function changeToUpperCase() {
+  for (let i = 0; i < buttons.length; i += 1) {
+    if ((flag === true) && (choice === true)) {
+      getValuesRuUpperCase.call(buttons[i]);
+    } else if ((flag === false) && (choice === true)) {
+      getValuesEnUpperCase.call(buttons[i]);
+    }
+  }
+}
+// change letter to lowerCase
+function changeToLowerCase() {
+  for (let i = 0; i < buttons.length; i += 1) {
+    if ((flag === true) && (choice === false)) {
+      getValuesRuLowerCase.call(buttons[i]);
+    } else if ((flag === false) && (choice === false)) {
+      getValuesEnLowerCase.call(buttons[i]);
+    }
+  }
+}
 
 // load window
 window.addEventListener('load', function getLoad() {
   // render buttons
-  renderKeyboardButtons(1, 14);
+  renderKeyboardButtons(0, 14);
   renderKeyboardButtons(14, 29);
   renderKeyboardButtons(29, 42);
   renderKeyboardButtons(42, 55);
   renderKeyboardButtons(55, 65);
-
+  if (choice) hoverButton.call(buttons[29]);
   textarea.focus();
 });

@@ -21,7 +21,8 @@ module.exports = {
         "nno-use-before-define": "off",
         "prefer-const": "off",
         "no-restricted-syntax": "off",
-        "no-use-before-define": "off"
+        "no-use-before-define": "off",
+        "no-extra-semi": "off"
     },
     "extends" : "airbnb-base",
 }
