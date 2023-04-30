@@ -52,7 +52,7 @@ let p1 = call4.generateElement();
 info.append(p1);
 let objectText2 = {
   elem: 'p',
-  text: 'Для переключения языка комбинация: левый ctrl + alt',
+  text: 'Для переключения языка комбинация: ctrl + alt',
 };
 let call5 = new ElementCreator(objectText2);
 let p2 = call5.generateElement();
@@ -105,6 +105,14 @@ function hoverButton() {
 function removeHover() {
   this.classList.remove('colored');
 }
+// print text with click keyboard
+function printClickedButtonText(data) {
+  textarea.value += data.textContent;
+}
+// print space keyboard
+function printSpaceButtonText() {
+  textarea.value += ' ';
+}
 
 // render Buttons accoding language
 function renderKeyboardButtons(start, length) {
@@ -122,36 +130,41 @@ function renderKeyboardButtons(start, length) {
   keyboard.append(div);
 }
 
-// print text with click keyboard
-function printClickedButtonText(data) {
-  textarea.value += data.textContent;
-}
 // mouse event
-let element = document.getElementsByClassName('keyboard')[0];
-element.addEventListener('mousedown', function addVirtualText(event) {
+document.getElementsByClassName('keyboard')[0].addEventListener('mousedown', function addVirtualText(event) {
   let target = event.target.closest('button.button-square');
-  let num = event.code;
-  console.log(num);
-  if (event.code === 'CapsLock') {
-    console.log('capslock down');
-    if (!choice) {
-      hoverButton.call(buttons[29]);
-      choice = true;
-      changeToUpperCase();
-    } else {
-      choice = false;
-      removeHover.call(buttons[29]);
-      changeToLowerCase();
+  let functionulButtons = event.target.closest('button.button_dark');
+  if (functionulButtons) {
+    hoverButton.call(functionulButtons);
+    if (functionulButtons.textContent === 'CapsLock') {
+      if (!choice) {
+        choice = true;
+        changeToUpperCase();
+      } else {
+        choice = false;
+        removeHover.call(buttons[29]);
+        changeToLowerCase();
+      }
     }
   } else if (target) {
     printClickedButtonText(target);
     hoverButton.call(target);
+  } else if (event.target.closest('button.button-space')) {
+    hoverButton.call(event.target.closest('button.button-space'));
+    printSpaceButtonText();
   }
 });
-element.addEventListener('mouseup', function addVirtualText(event) {
+document.getElementsByClassName('keyboard')[0].addEventListener('mouseup', function addVirtualText(event) {
   let target = event.target.closest('button.button-square');
-  if (event.code === 'CapsLock') console.log('capslock mouseup');
-  else if (target) target.classList.remove('colored');
+  let functionulButtons = event.target.closest('button.button_dark');
+  if (target) removeHover.call(target);
+  else if (event.target.closest('button.button-space')) {
+    removeHover.call(event.target.closest('button.button-space'));
+  } else if (functionulButtons) {
+    if (!(functionulButtons.textContent === 'CapsLock')) {
+      removeHover.call(functionulButtons);
+    }
+  }
 });
 
 // keyboard event
@@ -161,7 +174,8 @@ body.addEventListener('keydown', function keyboardListener(event) {
   let num = event.which;
   for (let button of buttons) {
     if (num === Number(button.getAttribute('data-num'))) {
-      printClickedButtonText(button);
+      if (button.classList.contains('button-space')) printSpaceButtonText();
+      else printClickedButtonText(button);
       hoverButton.call(button);
     }
   }
