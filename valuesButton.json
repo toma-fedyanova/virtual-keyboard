@@ -1,0 +1,580 @@
+{"valuesButton":
+[
+  {
+    "id": 1,
+    "content": "ё",
+    "contentAdd": "Ё",
+    "contentEn": "`",
+    "contentAddEn": "~",
+    "class": "button-square button_light",
+    "data-num": "192"
+  },
+  {
+    "id": 2,
+    "content": "1",
+    "contentAdd": "!",
+    "contentEn": "1",
+    "contentAddEn": "!",
+    "class": "button-square button_light",
+    "data-num": "49"
+  },
+  {
+    "id": 3,
+    "content": "2",
+    "contentAdd": "@",
+    "contentEn": "2",
+    "contentAddEn": "@",
+    "class": "button-square button_light",
+    "data-num": "50"
+  },
+  {
+    "id": 4,
+    "content": "3",
+    "contentAdd": "#",
+    "contentEn": "3",
+    "contentAddEn": "#",
+    "class": "button-square button_light",
+    "data-num": "51"
+  },
+  {
+    "id": 5,
+    "content": "4",
+    "contentAdd": "$",
+    "contentEn": "4",
+    "contentAddEn": "$",
+    "class": "button-square button_light",
+    "data-num": "52"
+  },
+  {
+    "id": 6,
+    "content": "5",
+    "contentAdd": "%",
+    "contentEn": "5",
+    "contentAddEn": "%",
+    "class": "button-square button_light",
+    "data-num": "53"
+  },
+  {
+    "id": 7,
+    "content": "6",
+    "contentAdd": "^",
+    "contentEn": "6",
+    "contentAddEn": "^",
+    "class": "button-square button_light",
+    "data-num": "54"
+  },
+  {
+    "id": 8,
+    "content": "7",
+    "contentAdd": "&",
+    "contentEn": "7",
+    "contentAddEn": "&",
+    "class": "button-square button_light",
+    "data-num": "55"
+  },
+  {
+    "id": 9,
+    "content": "8",
+    "contentAdd": "*",
+    "contentEn": "8",
+    "contentAddEn": "*",
+    "class": "button-square button_light",
+    "data-num": "56"
+  },
+  {
+    "id": 10,
+    "content": "9",
+    "contentAdd": "(",
+    "contentEn": "9",
+    "contentAddEn": "(",
+    "class": "button-square button_light",
+    "data-num": "57"
+  },
+  {
+    "id": 11,
+    "content": "0",
+    "contentAdd": ")",
+    "contentEn": "0",
+    "contentAddEn": ")",
+    "class": "button-square button_light",
+    "data-num": "48"
+  },
+  {
+    "id": 12,
+    "content": "-",
+    "contentAdd": "_",
+    "contentEn": "-",
+    "contentAddEn": "_",
+    "class": "button-square button_light",
+    "data-num": "189"
+  },
+  {
+    "id": 13,
+    "content": "=",
+    "contentAdd": "+",
+    "contentEn": "=",
+    "contentAddEn": "+",
+    "class": "button-square button_light",
+    "data-num": "187"
+  },
+  {
+    "id": 14,
+    "content": "Backspace",
+    "contentAdd": "Backspace",
+    "contentEn": "Backspace",
+    "contentAddEn": "Backspace",
+    "class": "button-rectangle button_dark",
+    "data-num": "8"
+  },
+  {
+    "id": 15,
+    "content": "Tab",
+    "contentAdd": "Tab",
+    "contentEn": "Tab",
+    "contentAddEn": "Tab",
+    "class": "button-addition button_dark",
+    "data-num": "9"
+  },
+  {
+    "id": 16,
+    "content": "й",
+    "contentAdd": "Й",
+    "contentEn": "q",
+    "contentAddEn": "Q",
+    "class": "button-square button_light",
+    "data-num": "81"
+  },
+  {
+    "id": 17,
+    "content": "ц",
+    "contentAdd": "Ц",
+    "contentEn": "w",
+    "contentAddEn": "W",
+    "class": "button-square button_light",
+    "data-num": "87"
+  },
+  {
+    "id": 18,
+    "content": "у",
+    "contentAdd": "У",
+    "contentEn": "e",
+    "contentAddEn": "E",
+    "class": "button-square button_light",
+    "data-num": "69"
+  },
+  {
+    "id": 19,
+    "content": "к",
+    "contentAdd": "К",
+    "contentEn": "r",
+    "contentAddEn": "R",
+    "class": "button-square button_light",
+    "data-num": "82"
+  },
+  {
+    "id": 20,
+    "content": "е",
+    "contentAdd": "Е",
+    "contentEn": "t",
+    "contentAddEn": "T",
+    "class": "button-square button_light",
+    "data-num": "84"
+  },
+  {
+    "id": 21,
+    "content": "н",
+    "contentAdd": "Н",
+    "contentEn": "y",
+    "contentAddEn": "Y",
+    "class": "button-square button_light",
+    "data-num": "89"
+  },
+  {
+    "id": 22,
+    "content": "г",
+    "contentAdd": "Г",
+    "contentEn": "u",
+    "contentAddEn": "U",
+    "class": "button-square button_light",
+    "data-num": "85"
+  },
+  {
+    "id": 23,
+    "content": "ш",
+    "contentAdd": "Ш",
+    "contentEn": "i",
+    "contentAddEn": "I",
+    "class": "button-square button_light",
+    "data-num": "73"
+  },
+  {
+    "id": 24,
+    "content": "щ",
+    "contentAdd": "Щ",
+    "contentEn": "o",
+    "contentAddEn": "O",
+    "class": "button-square button_light",
+    "data-num": "79"
+  },
+  {
+    "id": 25,
+    "content": "з",
+    "contentAdd": "З",
+    "contentEn": "p",
+    "contentAddEn": "P",
+    "class": "button-square button_light",
+    "data-num": "80"
+  },
+  {
+    "id": 26,
+    "content": "х",
+    "contentAdd": "Х",
+    "contentEn": "[",
+    "contentAddEn": "[",
+    "class": "button-square button_light",
+    "data-num": "219"
+  },
+  {
+    "id": 27,
+    "content": "ъ",
+    "contentAdd": "Ъ",
+    "contentEn": "]",
+    "contentAddEn": "]",
+    "class": "button-square button_light",
+    "data-num": "221"
+  },
+  {
+    "id": 28,
+    "content": "\\",
+    "contentAdd": "\\",
+    "contentEn": "\\",
+    "contentAddEn": "\\",
+    "class": "button-square button_light",
+    "data-num": "220"
+  },
+  {
+    "id": 29,
+    "content": "Del",
+    "contentAdd": "Del",
+    "contentEn": "Del",
+    "contentAddEn": "Del",
+    "class": "button-square button_dark",
+    "data-num": "46"
+  },
+  {
+    "id": 30,
+    "content": "CapsLock",
+    "contentAdd": "CapsLock",
+    "contentEn": "CapsLock",
+    "contentAddEn": "CapsLock",
+    "class": "button-rectangle button_dark",
+    "data-num": "caps"
+  },
+  {
+    "id": 31,
+    "content": "ф",
+    "contentAdd": "Ф",
+    "contentEn": "a",
+    "contentAddEn": "A",
+    "class": "button-square button_light",
+    "data-num": "65"
+  },
+  {
+    "id": 32,
+    "content": "ы",
+    "contentAdd": "Ы",
+    "contentEn": "s",
+    "contentAddEn": "S",
+    "class": "button-square button_light",
+    "data-num": "83"
+  },
+  {
+    "id": 33,
+    "content": "в",
+    "contentAdd": "В",
+    "contentEn": "d",
+    "contentAddEn": "D",
+    "class": "button-square button_light",
+    "data-num": "68"
+  },
+  {
+    "id": 34,
+    "content": "а",
+    "contentAdd": "А",
+    "contentEn": "f",
+    "contentAddEn": "F",
+    "class": "button-square button_light",
+    "data-num": "70"
+  },
+  {
+    "id": 35,
+    "content": "п",
+    "contentAdd": "П",
+    "contentEn": "g",
+    "contentAddEn": "G",
+    "class": "button-square button_light",
+    "data-num": "71"
+  },
+  {
+    "id": 36,
+    "content": "р",
+    "contentAdd": "Р",
+    "contentEn": "h",
+    "contentAddEn": "H",
+    "class": "button-square button_light",
+    "data-num": "72"
+  },
+  {
+    "id": 37,
+    "content": "о",
+    "contentAdd": "О",
+    "contentEn": "j",
+    "contentAddEn": "J",
+    "class": "button-square button_light",
+    "data-num": "74"
+  },
+  {
+    "id": 38,
+    "content": "л",
+    "contentAdd": "Л",
+    "contentEn": "k",
+    "contentAddEn": "K",
+    "class": "button-square button_light",
+    "data-num": "75"
+  },
+  {
+    "id": 39,
+    "content": "д",
+    "contentAdd": "Д",
+    "contentEn": "l",
+    "contentAddEn": "L",
+    "class": "button-square button_light",
+    "data-num": "76"
+  },
+  {
+    "id": 40,
+    "content": "ж",
+    "contentAdd": "Ж",
+    "contentEn": ";",
+    "contentAddEn": ":",
+    "class": "button-square button_light",
+    "data-num": "186"
+  },
+  {
+    "id": 41,
+    "content": "э",
+    "contentAdd": "Э",
+    "contentEn": "'",
+    "contentAddEn": "\"",
+    "class": "button-square button_light",
+    "data-num": "222"
+  },
+  {
+    "id": 42,
+    "content": "Enter",
+    "contentAdd": "Enter",
+    "contentEn": "Enter",
+    "contentAddEn": "Enter",
+    "class": "button-addition button_dark",
+    "data-num": "13"
+  },
+  {
+    "id": 43,
+    "content": "Shift",
+    "contentAdd": "Shift",
+    "contentEn": "Shift",
+    "contentAddEn": "Shift",
+    "class": "button-rectangle button_dark",
+    "data-num": "ShiftLeft"
+  },
+  {
+    "id": 44,
+    "content": "я",
+    "contentAdd": "Я",
+    "contentEn": "z",
+    "contentAddEn": "Z",
+    "class": "button-square button_light",
+    "data-num": "90"
+  },
+  {
+    "id": 45,
+    "content": "ч",
+    "contentAdd": "Ч",
+    "contentEn": "x",
+    "contentAddEn": "X",
+    "class": "button-square button_light",
+    "data-num": "88"
+  },
+  {
+    "id": 46,
+    "content": "с",
+    "contentAdd": "С",
+    "contentEn": "c",
+    "contentAddEn": "C",
+    "class": "button-square button_light",
+    "data-num": "67"
+  },
+  {
+    "id": 47,
+    "content": "м",
+    "contentAdd": "М",
+    "contentEn": "v",
+    "contentAddEn": "V",
+    "class": "button-square button_light",
+    "data-num": "86"
+  },
+  {
+    "id": 48,
+    "content": "и",
+    "contentAdd": "И",
+    "contentEn": "b",
+    "contentAddEn": "B",
+    "class": "button-square button_light",
+    "data-num": "66"
+  },
+  {
+    "id": 49,
+    "content": "т",
+    "contentAdd": "Т",
+    "contentEn": "n",
+    "contentAddEn": "N",
+    "class": "button-square button_light",
+    "data-num": "78"
+  },
+  {
+    "id": 50,
+    "content": "ь",
+    "contentAdd": "Ь",
+    "contentEn": "m",
+    "contentAddEn": "M",
+    "class": "button-square button_light",
+    "data-num": "77"
+  },
+  {
+    "id": 51,
+    "content": "б",
+    "contentAdd": "Б",
+    "contentEn": ",",
+    "contentAddEn": "<",
+    "class": "button-square button_light",
+    "data-num": "188"
+  },
+  {
+    "id": 52,
+    "content": "ю",
+    "contentAdd": "Ю",
+    "contentEn": ".",
+    "contentAddEn": ">",
+    "class": "button-square button_light",
+    "data-num": "190"
+  },
+  {
+    "id": 53,
+    "content": ".",
+    "contentAdd": ",",
+    "contentEn": ".",
+    "contentAddEn": ">",
+    "class": "button-square button_light",
+    "data-num": "191"
+  },
+  {
+    "id": 54,
+    "content": "",
+    "contentAdd": "",
+    "contentEn": "",
+    "contentAddEn": "",
+    "class": "button-square button_dark icono-caretUp arrow",
+    "data-num": "38"
+  },
+  {
+    "id": 55,
+    "content": "Shift",
+    "contentAdd": "Shift",
+    "contentEn": "Shift",
+    "contentAddEn": "Shift",
+    "class": "button-addition button_dark",
+    "data-num": "ShiftRight"
+  },
+  {
+    "id": 56,
+    "content": "Ctrl",
+    "contentAdd": "Ctrl",
+    "contentEn": "Ctrl",
+    "contentAddEn": "Ctrl",
+    "class": "button-square button_dark",
+    "data-num": "ControlLeft"
+  },
+  {
+    "id": 57,
+    "content": "Win",
+    "contentAdd": "Win",
+    "contentEn": "Win",
+    "contentAddEn": "Win",
+    "class": "button-square button_dark",
+    "data-num": "91"
+  },
+  {
+    "id": 58,
+    "content": "Alt",
+    "contentAdd": "Alt",
+    "contentEn": "Alt",
+    "contentAddEn": "Alt",
+    "class": "button-square button_dark",
+    "data-num": "AltLeft"
+  },
+  {
+    "id": 59,
+    "content": "",
+    "contentAdd": "",
+    "contentEn": "",
+    "contentAddEn": "",
+    "class": "button-space",
+    "data-num": "32"
+  },
+  {
+    "id": 60,
+    "content": "Alt",
+    "contentAdd": "Alt",
+    "contentEn": "Alt",
+    "contentAddEn": "Alt",
+    "class": "button-square button_dark",
+    "data-num": "AltRight"
+  },
+  {
+    "id": 61,
+    "content": "",
+    "contentAdd": "",
+    "contentEn": "",
+    "contentAddEn": "",
+    "class": "button-square button_dark icono-caretLeft arrow",
+    "data-num": "37"
+  },
+  {
+    "id": 62,
+    "content": "",
+    "contentAdd": "",
+    "contentEn": "",
+    "contentAddEn": "",
+    "class": "button-square button_dark icono-caretDown arrow",
+    "data-num": "40"
+  },
+  {
+    "id": 63,
+    "content": "",
+    "contentAdd": "",
+    "contentEn": "",
+    "contentAddEn": "",
+    "class": "button-square button_dark icono-caretRight arrow",
+    "data-num": "39"
+  },
+  {
+    "id": 64,
+    "content": "Ctrl",
+    "contentAdd": "Ctrl",
+    "contentEn": "Ctrl",
+    "contentAddEn": "Ctrl",
+    "class": "button-square button_dark",
+    "data-num": "ControlRight"
+  }
+]
+}
