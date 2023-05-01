@@ -125,7 +125,12 @@ function removeHover() {
 }
 // print text with click keyboard
 function printClickedButtonText(data) {
-  textarea.value += data.textContent;
+  if (textarea.selectionStart !== textarea.value.length) {
+    let num = textarea.selectionStart;
+    textarea.value = textarea.value.slice(0, textarea.selectionStart) + data.textContent + textarea.value.slice(textarea.selectionEnd);
+    textarea.selectionStart = num + 1;
+    textarea.selectionEnd = num + 1;
+  } else textarea.value += data.textContent;
 }
 // print space keyboard
 function printSpaceButtonText() {
@@ -134,6 +139,35 @@ function printSpaceButtonText() {
 // print tab keyboard
 function printTabButtonText() {
   textarea.value += '  ';
+}
+// print backspace keyboard
+function deleteLetterBackspace() {
+  let num = textarea.selectionStart;
+  if ((num !== textarea.value.length) && (num !== 0)) {
+    textarea.value = textarea.value.slice(0, num - 1) + textarea.value.slice(num);
+    textarea.selectionStart = num - 1;
+    textarea.selectionEnd = num - 1;
+  } else if ((num === textarea.value.length) && (num !== 0)) textarea.value = textarea.value.slice(0, -1);
+}
+// print enter keyboard
+function getEnter() {
+  let position;
+  if (textarea.selectionStart !== textarea.value.length) position = textarea.selectionStart;
+  textarea.value = `${textarea.value.slice(0, textarea.selectionStart)}\n${textarea.value.slice(textarea.selectionEnd, textarea.value.length)}`;
+  if (position) {
+    textarea.selectionStart = position;
+    textarea.selectionEnd = position;
+  }
+}
+// delete keyboard
+function getDelete() {
+  if (textarea.selectionStart === textarea.selectionEnd) {
+    let number = textarea.selectionStart;
+    textarea.value = textarea.value.slice(0, textarea.selectionStart) + textarea.value.slice(textarea.selectionEnd + 1);
+    textarea.selectionStart = number;
+    textarea.selectionEnd = number;
+  }
+  textarea.value = textarea.value.slice(0, textarea.selectionStart) + textarea.value.slice(textarea.selectionEnd);
 }
 // change letter to UpperCase
 function changeToUpperCase() {
@@ -160,14 +194,11 @@ function renderKeyboardButtons(start, length) {
   const div = document.createElement('div');
   div.className = 'keybourd__row';
   for (let i = start; i < length; i += 1) {
-    console.log(`${flag} loop`);
     const btn = document.createElement('button');
     if (flag === 'true') {
-      console.log('true');
       getValuesRu.call(btn, i);
     } else {
       getValuesEn.call(btn, i);
-      console.log('false');
     }
     div.append(btn);
   }
@@ -194,6 +225,12 @@ document.getElementsByClassName('keyboard')[0].addEventListener('mousedown', fun
       changeToUpperCase();
     } else if (functionulButtons.textContent === 'Tab') {
       printTabButtonText();
+    } else if (functionulButtons.textContent === 'Backspace') {
+      deleteLetterBackspace();
+    } else if (functionulButtons.textContent === 'Enter') {
+      getEnter();
+    } else if (functionulButtons.textContent === 'Del') {
+      getDelete();
     }
   } else if (target) {
     printClickedButtonText(target);
@@ -229,6 +266,9 @@ body.addEventListener('keydown', function keyboardListener(event) {
     if (num === Number(button.getAttribute('data-num'))) {
       if (button.classList.contains('button-space')) printSpaceButtonText();
       else if (button.textContent === 'Tab') printTabButtonText();
+      else if (button.textContent === 'Backspace') deleteLetterBackspace();
+      else if (button.textContent === 'Enter') getEnter();
+      else if (button.textContent === 'Del') getDelete();
       else printClickedButtonText(button);
       hoverButton.call(button);
     }
@@ -282,4 +322,4 @@ body.addEventListener('keyup', function keyboardUpListener(event) {
     choice = false;
     changeToLowerCase();
   }
-})
+});
