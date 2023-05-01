@@ -140,6 +140,13 @@ function printSpaceButtonText() {
 function printTabButtonText() {
   textarea.value += '  ';
 }
+// print arrow top
+function printArrowTop() {
+  let p = document.createElement('p');
+  p.innerHTML = '&#9650;';
+  let elem = p.innerHTML;
+  textarea.value += elem;
+}
 // print backspace keyboard
 function deleteLetterBackspace() {
   let num = textarea.selectionStart;
@@ -231,6 +238,10 @@ document.getElementsByClassName('keyboard')[0].addEventListener('mousedown', fun
       getEnter();
     } else if (functionulButtons.textContent === 'Del') {
       getDelete();
+    } else if (functionulButtons.textContent === 'Win') {
+      textarea.textContent += '';
+    } else if (functionulButtons.classList.contains('icono-caretUp')) {
+      printArrowTop();
     }
   } else if (target) {
     printClickedButtonText(target);
@@ -269,6 +280,8 @@ body.addEventListener('keydown', function keyboardListener(event) {
       else if (button.textContent === 'Backspace') deleteLetterBackspace();
       else if (button.textContent === 'Enter') getEnter();
       else if (button.textContent === 'Del') getDelete();
+      else if (button.textContent === 'Win') textarea.textContent += '';
+      else if (button.classList.contains('icono-caretUp')) printArrowTop();
       else printClickedButtonText(button);
       hoverButton.call(button);
     }
