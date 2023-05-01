@@ -1,8 +1,26 @@
 import { ElementCreator } from './Button';
 
 const body = document.getElementsByTagName('body')[0];
-let flag = true;
+let flag = 'true';
 let choice = false;
+
+// load window
+window.addEventListener('load', function getLoad() {
+  if (localStorage.getItem('flag')) flag = localStorage.getItem('flag');
+  // render buttons
+  renderKeyboardButtons(0, 14);
+  renderKeyboardButtons(14, 29);
+  renderKeyboardButtons(29, 42);
+  renderKeyboardButtons(42, 55);
+  renderKeyboardButtons(55, 65);
+  if (choice) hoverButton.call(buttons[29]);
+  textarea.focus();
+});
+// change language before load in local storage
+function saveFlag() {
+  localStorage.setItem('flag', flag);
+}
+window.addEventListener('beforeunload', saveFlag);
 
 // add title
 let objectTitle = {
@@ -113,17 +131,43 @@ function printClickedButtonText(data) {
 function printSpaceButtonText() {
   textarea.value += ' ';
 }
-
+// print tab keyboard
+function printTabButtonText() {
+  textarea.value += '  ';
+}
+// change letter to UpperCase
+function changeToUpperCase() {
+  for (let i = 0; i < buttons.length; i += 1) {
+    if ((flag === 'true') && (choice === true)) {
+      getValuesRuUpperCase.call(buttons[i]);
+    } else if ((flag === 'false') && (choice === true)) {
+      getValuesEnUpperCase.call(buttons[i]);
+    }
+  }
+}
+// change letter to lowerCase
+function changeToLowerCase() {
+  for (let i = 0; i < buttons.length; i += 1) {
+    if ((flag === 'true') && (choice === false)) {
+      getValuesRuLowerCase.call(buttons[i]);
+    } else if ((flag === 'false') && (choice === false)) {
+      getValuesEnLowerCase.call(buttons[i]);
+    }
+  }
+}
 // render Buttons accoding language
 function renderKeyboardButtons(start, length) {
   const div = document.createElement('div');
   div.className = 'keybourd__row';
   for (let i = start; i < length; i += 1) {
+    console.log(`${flag} loop`);
     const btn = document.createElement('button');
-    if (flag === true) {
+    if (flag === 'true') {
+      console.log('true');
       getValuesRu.call(btn, i);
     } else {
       getValuesEn.call(btn, i);
+      console.log('false');
     }
     div.append(btn);
   }
@@ -145,6 +189,11 @@ document.getElementsByClassName('keyboard')[0].addEventListener('mousedown', fun
         removeHover.call(buttons[29]);
         changeToLowerCase();
       }
+    } else if (functionulButtons.textContent === 'Shift') {
+      choice = true;
+      changeToUpperCase();
+    } else if (functionulButtons.textContent === 'Tab') {
+      printTabButtonText();
     }
   } else if (target) {
     printClickedButtonText(target);
@@ -163,6 +212,9 @@ document.getElementsByClassName('keyboard')[0].addEventListener('mouseup', funct
   } else if (functionulButtons) {
     if (!(functionulButtons.textContent === 'CapsLock')) {
       removeHover.call(functionulButtons);
+    } if (functionulButtons.textContent === 'Shift') {
+      choice = false;
+      changeToLowerCase();
     }
   }
 });
@@ -171,10 +223,12 @@ document.getElementsByClassName('keyboard')[0].addEventListener('mouseup', funct
 let buttons = document.getElementsByTagName('button');
 body.addEventListener('keydown', function keyboardListener(event) {
   event.preventDefault();
+  textarea.focus();
   let num = event.which;
   for (let button of buttons) {
     if (num === Number(button.getAttribute('data-num'))) {
       if (button.classList.contains('button-space')) printSpaceButtonText();
+      else if (button.textContent === 'Tab') printTabButtonText();
       else printClickedButtonText(button);
       hoverButton.call(button);
     }
@@ -194,10 +248,13 @@ body.addEventListener('keydown', function keyboardListener(event) {
       removeHover.call(buttons[29]);
       changeToLowerCase();
     }
+  } if (event.shiftKey) {
+    choice = true;
+    changeToUpperCase();
   }
   if (event.ctrlKey && event.altKey) {
-    if (flag) flag = false;
-    else flag = true;
+    if (flag === 'true') flag = 'false';
+    else flag = 'true';
     keyboard.innerHTML = '';
     renderKeyboardButtons(0, 14);
     renderKeyboardButtons(14, 29);
@@ -221,37 +278,8 @@ body.addEventListener('keyup', function keyboardUpListener(event) {
       removeHover.call(elem);
     };
   }
-});
-
-// change letter to UpperCase
-function changeToUpperCase() {
-  for (let i = 0; i < buttons.length; i += 1) {
-    if ((flag === true) && (choice === true)) {
-      getValuesRuUpperCase.call(buttons[i]);
-    } else if ((flag === false) && (choice === true)) {
-      getValuesEnUpperCase.call(buttons[i]);
-    }
+  if (event.key === 'Shift') {
+    choice = false;
+    changeToLowerCase();
   }
-}
-// change letter to lowerCase
-function changeToLowerCase() {
-  for (let i = 0; i < buttons.length; i += 1) {
-    if ((flag === true) && (choice === false)) {
-      getValuesRuLowerCase.call(buttons[i]);
-    } else if ((flag === false) && (choice === false)) {
-      getValuesEnLowerCase.call(buttons[i]);
-    }
-  }
-}
-
-// load window
-window.addEventListener('load', function getLoad() {
-  // render buttons
-  renderKeyboardButtons(0, 14);
-  renderKeyboardButtons(14, 29);
-  renderKeyboardButtons(29, 42);
-  renderKeyboardButtons(42, 55);
-  renderKeyboardButtons(55, 65);
-  if (choice) hoverButton.call(buttons[29]);
-  textarea.focus();
-});
+})
