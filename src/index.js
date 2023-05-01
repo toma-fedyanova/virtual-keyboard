@@ -147,6 +147,27 @@ function printArrowTop() {
   let elem = p.innerHTML;
   textarea.value += elem;
 }
+// print arrow left
+function printArrowLeft() {
+  let p = document.createElement('p');
+  p.innerHTML = '&#5130;';
+  let elem = p.innerHTML;
+  textarea.value += elem;
+}
+// print arrow right
+function printArrowRight() {
+  let p = document.createElement('p');
+  p.innerHTML = '&#5125;';
+  let elem = p.innerHTML;
+  textarea.value += elem;
+}
+// print arrow down
+function printArrowDown() {
+  let p = document.createElement('p');
+  p.innerHTML = '&#9660;';
+  let elem = p.innerHTML;
+  textarea.value += elem;
+}
 // print backspace keyboard
 function deleteLetterBackspace() {
   let num = textarea.selectionStart;
@@ -242,6 +263,12 @@ document.getElementsByClassName('keyboard')[0].addEventListener('mousedown', fun
       textarea.textContent += '';
     } else if (functionulButtons.classList.contains('icono-caretUp')) {
       printArrowTop();
+    } else if (functionulButtons.classList.contains('icono-caretLeft')) {
+      printArrowLeft();
+    } else if (functionulButtons.classList.contains('icono-caretDown')) {
+      printArrowDown();
+    } else if (functionulButtons.classList.contains('icono-caretRight')) {
+      printArrowRight();
     }
   } else if (target) {
     printClickedButtonText(target);
@@ -282,6 +309,9 @@ body.addEventListener('keydown', function keyboardListener(event) {
       else if (button.textContent === 'Del') getDelete();
       else if (button.textContent === 'Win') textarea.textContent += '';
       else if (button.classList.contains('icono-caretUp')) printArrowTop();
+      else if (button.classList.contains('icono-caretLeft')) printArrowLeft();
+      else if (button.classList.contains('icono-caretDown')) printArrowDown();
+      else if (button.classList.contains('icono-caretRight')) printArrowRight();
       else printClickedButtonText(button);
       hoverButton.call(button);
     }
