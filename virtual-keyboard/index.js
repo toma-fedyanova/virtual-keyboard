@@ -332,7 +332,7 @@ body.addEventListener('keydown', function keyboardListener(event) {
   for (let elem of buttons) {
     if (String(event.code) === elem.getAttribute('data-num')) {
       hoverButton.call(elem);
-    };
+    }
   }
   if (event.code === 'CapsLock') {
     if (!choice) {
@@ -368,11 +368,11 @@ body.addEventListener('keyup', function keyboardUpListener(event) {
     if (num === Number(button.getAttribute('data-num'))) {
       removeHover.call(button);
     }
-  };
+  }
   for (let elem of buttons) {
     if (String(event.code) === elem.getAttribute('data-num')) {
       removeHover.call(elem);
-    };
+    }
   }
   if (event.key === 'Shift') {
     choice = false;
